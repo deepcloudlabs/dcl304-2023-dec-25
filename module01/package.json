@@ -1,0 +1,13 @@
+{
+  "name": "module01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "service": "node server.js"
+  },
+  "dependencies": {
+
+  },
+  "private": true
+}
