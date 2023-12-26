@@ -1,0 +1,14 @@
+{
+  "name": "study-async-functions",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "exercise09.js",
+  "scripts": {
+    "exercise09": "node exercise09.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "private": true
+}

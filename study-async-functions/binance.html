@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Binance</title>
+    <script type="application/javascript">
+        const BINANCE_TICKER_PRICE_URL = "https://api.binance.com/api/v3/ticker/price?symbol=";
+        Promise.all([
+            fetch(BINANCE_TICKER_PRICE_URL.concat("BTCUSDT")).then(res => res.json()),
+            fetch(BINANCE_TICKER_PRICE_URL.concat("REQETH")).then(res => res.json()),
+            fetch(BINANCE_TICKER_PRICE_URL.concat("POWRETH")).then(res => res.json()),
+            fetch(BINANCE_TICKER_PRICE_URL.concat("VIBETH")).then(res => res.json()),
+            fetch(BINANCE_TICKER_PRICE_URL.concat("TRXBTC")).then(res => res.json()),
+            fetch(BINANCE_TICKER_PRICE_URL.concat("ENJETH")).then(res => res.json())
+        ]).then(console.log);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
