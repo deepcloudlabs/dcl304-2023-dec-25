@@ -1,6 +1,6 @@
 1. function-based/procedural programming
-  i) function
- ii) asynchronous functions
+  i) function ✔
+ ii) asynchronous functions ✔
     Promise
     Promise.any()/Promise.all()
     async/await
