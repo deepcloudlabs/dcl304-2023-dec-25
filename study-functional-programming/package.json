@@ -1,0 +1,11 @@
+{
+  "name": "study-functional-programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercise02.js",
+  "type": "commonjs",
+  "scripts": {
+    "exercise02": "node exercise02.js"
+  },
+  "private": true
+}
