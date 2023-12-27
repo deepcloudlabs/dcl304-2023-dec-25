@@ -5,7 +5,10 @@
   "main": "exercise01.js",
   "scripts": {
     "exercise01": "set UV_THREADPOOL_SIZE=40 & node exercise01.js",
-    "exercise02": "node exercise02.js"
+    "exercise02": "node exercise02.js",
+    "exercise03": "node exercise03.js",
+    "exercise04": "node exercise04.js",
+    "exercise05": "node exercise05.js"
   },
   "keywords": [],
   "author": "",

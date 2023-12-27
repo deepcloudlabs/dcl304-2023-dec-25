@@ -64,6 +64,19 @@ ws.on("message", frame => {
     document.ask = event.a;
     document.sequence = event.t;
     document.timestamp = new Date(event.T);
+    // send the event through ws
+    sessions.forEach(session => {
+       session.emit("trade-event",JSON.stringify(document));
+    });
+    // send the event to the kafka broker
+    producer.send({
+        topic: "trade-events",
+        messages: [
+            {"key": document.symbol, "value": JSON.stringify(document)}
+        ]
+    }).then(() => {
+        console.log("Event has been successfully sent.")
+    }).catch(err => console.error(err));
     const trade = new Trade(document);
     trade.save()
         .then((savedTrade) => {
@@ -104,6 +117,66 @@ api.get("/algotrading/api/v1/trades/:symbol", (req, res) => {
 });
 //endregion
 
+//region Kafka Producer -- Configuration
+const {Kafka, Partitioners} = require("kafkajs");
+const kafka = new Kafka({
+    clientId: "hr-backend-producer",
+    brokers: ["127.0.0.1:9092"]
+});
+const producer = kafka.producer({
+    createPartitioner: Partitioners.LegacyPartitioner
+});
+
+producer.connect()
+    .then(() => console.log("Connected to the Kafka broker successfully."))
+    .catch(err => console.error(err));
+//endregion
+
+//region RabbitMQ Producer -- Configuration
+let amqp = require('amqplib/callback_api');
+amqp.connect('amqp://guest:guest@127.0.0.1:5672', (err, connection) => {
+    if (err) {
+        throw err;
+    }
+    connection.createChannel((channel_error, channel) => {
+        if (channel_error) {
+            throw channel_error;
+        }
+        ws.on('message', (frame) => {
+            const event = JSON.parse(frame);
+            const document = {};
+            document._id = new Types.ObjectId();
+            document.symbol = event.s;
+            document.price = Number(event.p);
+            document.quantity = Number(event.q);
+            document.volume = document.price * document.quantity;
+            document.bid = event.b;
+            document.ask = event.a;
+            document.sequence = event.t;
+            document.timestamp = new Date(event.T);
+            channel.publish('tradex', '', Buffer.from(JSON.stringify(document)));
+        });
+    });
+});
+//endregion
+
+//region socketio
+const {Server} = require("socket.io");
+const io = new Server(2025, {cors: {origin: "*"}});
+const sessions = [];
+
+io.on("connection", session => {
+    console.log(`New websocket connection is created: ${session.id}`);
+    sessions.push(session);
+    io.on("disconnect", () => {
+        console.log(`Websocket connection is closed: ${session.id}`);
+        sessions.splice(0,
+            sessions.length,
+            sessions.filter(_session => _session.id !== session.id)
+        );
+    });
+});
+//endregion
 const port = 2024;
 api.listen(port, () => {
     console.log(`REST API is running at port ${port}`)

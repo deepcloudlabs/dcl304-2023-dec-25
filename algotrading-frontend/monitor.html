@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitor BTC</title>
+    <style type="text/css">
+        @import url("css/bootstrap.css");
+        @import url("css/bootstrap-theme.css");
+        @import url("css/toastr.css");
+    </style>
+    <script type="text/javascript" src="http://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="js/lib/knockout-3.4.2.debug.js"></script>
+    <script type="text/javascript" src="js/lib/chart.bundle.js"></script>
+    <script type="text/javascript" src="js/lib/ko-chart.js"></script>
+    <script type="text/javascript" src="node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script type="text/javascript" src="js/binance.js"></script>
+</head>
+<body>
+<p />
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+             <h3 class="panel-title">Monitoring Panel</h3>
+        </div>
+        <div class="panel-body">
+            <div class="panel-body">
+                <canvas data-bind="chart: {type: 'line', data: data, options: { observeChanges: true, throttle: 100, animation: false}}"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Trading View</h3>
+        </div>
+        <div class="panel-body">
+            <div id="dcl"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

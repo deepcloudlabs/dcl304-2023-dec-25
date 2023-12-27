@@ -13,6 +13,11 @@
             fetch(BINANCE_TICKER_PRICE_URL.concat("TRXBTC")).then(res => res.json()),
             fetch(BINANCE_TICKER_PRICE_URL.concat("ENJETH")).then(res => res.json())
         ]).then(console.log);
+        const BINANCE_TICKER_PRICE_URL2 = "https://api.binance.com/api/v3/ticker/price";
+        fetch(BINANCE_TICKER_PRICE_URL2)
+            .then(res => res.json())
+            .then(tickers => tickers.map(ticker => ticker.symbol))
+            .then(symbols => symbols.forEach(console.log));
     </script>
 </head>
 <body>
