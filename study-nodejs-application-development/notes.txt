@@ -1,0 +1,22 @@
+Synchronously calls each of the listeners registered for the event namedeventName, in the order they were registered, passing the supplied arguments to each.
+
+Application is just started...
+Before emitting an event for topic-b
+[Listener #1] New event is received from topic-b: {"data":"Hello moon!"}
+[Listener #2] New event is received from topic-b: {"data":"Hello moon!"}
+After emitting an event for topic-b
+Before emitting an event for topic-a
+[Listener #1] New event is received from topic-a: {"data":"Hello mars!"}
+[Listener #2] New event is received from topic-a: {"data":"Hello mars!"}
+[Listener #3] New event is received from topic-a: {"data":"Hello mars!"}
+After emitting an event for topic-a
+Before emitting an event for topic-b
+[Listener #1] New event is received from topic-b: {"data":"Hello moon!"}
+[Listener #2] New event is received from topic-b: {"data":"Hello moon!"}
+After emitting an event for topic-b
+Before emitting an event for topic-a
+[Listener #1] New event is received from topic-a: {"data":"Hello mars!"}
+[Listener #2] New event is received from topic-a: {"data":"Hello mars!"}
+[Listener #3] New event is received from topic-a: {"data":"Hello mars!"}
+After emitting an event for topic-a
+
