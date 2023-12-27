@@ -1,14 +1,21 @@
 1. function-based/procedural programming
   i) function ✔
  ii) asynchronous functions ✔
-    Promise
-    Promise.any()/Promise.all()
-    async/await
+    Promise ✔
+    Promise.any()/Promise.all() ✔
+    async/await ✔
 iii) event-based programming (js)
-2. object-based programming
-3. class-based/object-oriented programming
-4. functional programming
-  i) HoF (Higher-Order Function) -> filter/map/reduce/flatMap/flat/some/every
- ii) Pure Function -> Lambda Expression
-iii) Generative Functions
-5. reactive programming (js + lib -> rxjs)
+2. object-based programming ✔
+3. class-based/object-oriented programming ✔
+4. functional programming ✔
+  i) HoF (Higher-Order Function) -> filter/map/reduce/flatMap/flat/some/every ✔
+ ii) Pure Function -> Lambda Expression ✔
+Day #3
+iii) Generative Functions ✔
+5. reactive programming (js + lib -> rxjs) ✔
+6. nodejs -> architecture ✔ set
+   UV_THREADPOOL_SIZE=40 & node exercise01.js
+   event-based ✔
+   event-driven programming (kafka/rabbitmq)
+   websocket/http -> restful service
+   mongodb
