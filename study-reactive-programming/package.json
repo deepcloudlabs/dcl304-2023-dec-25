@@ -1,0 +1,15 @@
+{
+  "name": "study-reactive-programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercise02.js",
+  "scripts": {
+    "exercise02": "node exercise02.js"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.1",
+    "ws": "^8.16.0",
+    "node-fetch": "^3.3.2"
+  },
+  "private": true
+}
